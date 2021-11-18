@@ -1,10 +1,13 @@
-const express=require("express")
-const app=express()
-const port=3000;
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 3000;
 
-app.get("/",(req,res)=>{
-    res.send("HELLO WORLD")
-})
-app.listen(port,()=>{
-    console.log(`OUR SSEVER IS STARTING ${port}`);
-})
+app.use(express.static('public'));
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve((__dirname, 'temp/index.html')));
+});
+
+app.listen(port, () => {
+  console.log(`OUR SSEVER IS STARTING ${port}`);
+});
