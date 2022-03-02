@@ -7,11 +7,16 @@ const { urlencoded, json } = require('express');
 const photoController = require('./controllers/photoController');
 const pageController = require('./controllers/pageController');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 
-mongoose.connect('mongodb://localhost/pcat-test-db', {
+//bmsturk6-11M
+mongoose.connect('mongodb+srv://Omar:bmsturk6-11M@cluster0.bxcsa.mongodb.net/pcat-db?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+}).then(()=>{
+  console.log("DB CONNECTED")
+}).catch((err)=>{
+  console.log(err)
 });
 
 //template engine
